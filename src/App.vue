@@ -8,7 +8,7 @@
     <br>
    
 <button @click="View">View</button>
-<button >Edit</button>
+<button @click="Edit">Edit</button>
 <button @click="Delete">Delete</button>
 <button @click="Add">Add</button>
 <br>
@@ -22,6 +22,7 @@
 import ViewNotesService from './services/ViewNotesService'
 import NotesService from './services/AddNotesService'
 import DeleteNotesService from './services/DeleteNotesService'
+import EditNotesService from './services/EditNotesService'
 export default {
 name:'app',
 data() {
@@ -51,6 +52,13 @@ console.log(`${response.data} Added`)
       Name:this.Name
     })
     console.log(`${response.data} Deleted`)
+  },
+  async Edit(){
+    const response=await EditNotesService.Edit({
+      Name:this.Name,
+      Note:this.Note
+    })
+    console.log(`${response.data} Edited`)
   }
   }
 }
